@@ -4,10 +4,11 @@ import sequelize from '../config/database.js';
 const Region = sequelize.define('Region', {
   name: {
     type: DataTypes.STRING,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 }, {
-  timestamps: false // Disable createdAt and updatedAt
+  tableName: 'Regions',
+  timestamps: false,
 });
 
 export default Region;

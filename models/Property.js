@@ -4,40 +4,39 @@ import sequelize from '../config/database.js';
 const Property = sequelize.define('Property', {
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   description: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    allowNull: false,
   },
   region_id: {
     type: DataTypes.INTEGER,
-    references: {
-      model: 'regions', // Ensure this matches the table name in the database
-      key: 'id'
-    }
+    allowNull: false,
   },
   price_per_night: {
-    type: DataTypes.DECIMAL,
-    allowNull: false
+    type: DataTypes.FLOAT,
+    allowNull: false,
   },
   available_from: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
   },
   available_to: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
   },
   totalGuests: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   imageUrl: {
-    type: DataTypes.STRING, // Add this line for image URLs
-    allowNull: true
-  }
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 }, {
-  timestamps: false // Disable createdAt and updatedAt
+  tableName: 'Properties',
+  timestamps: false,
 });
 
 export default Property;

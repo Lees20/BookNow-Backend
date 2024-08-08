@@ -1,14 +1,17 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import Property from './Property.js';
 
 const Booking = sequelize.define('Booking', {
   property_id: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'Property',
+      model: 'Properties',
       key: 'id'
     }
+  },
+  guest_name: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
   guest_count: {
     type: DataTypes.INTEGER,
@@ -23,9 +26,7 @@ const Booking = sequelize.define('Booking', {
     allowNull: false
   }
 }, {
-  timestamps: false // Disable createdAt and updatedAt
+  timestamps: false
 });
-
-Booking.belongsTo(Property, { foreignKey: 'property_id' });
 
 export default Booking;

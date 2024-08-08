@@ -1,9 +1,15 @@
+import sequelize from '../config/database.js';
 import Property from './Property.js';
 import Region from './Region.js';
-import Booking from './Booking.js';
+import './associations.js';
 
-// Define associations here
-Property.belongsTo(Region, { foreignKey: 'region_id' });
-Region.hasMany(Property, { foreignKey: 'region_id' });
+const initModels = async () => {
+  try {
+    await sequelize.sync({ alter: true });
+    console.log('Database synchronized');
+  } catch (error) {
+    console.error('Error synchronizing the database:', error);
+  }
+};
 
-export { Property, Region, Booking };
+export { Property, Region, initModels };
